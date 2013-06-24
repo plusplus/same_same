@@ -1,4 +1,4 @@
-require "samesame/cluster_similarity"
+require 'same_same/cluster_similarity'
 
 module SameSame
   class RockClusters

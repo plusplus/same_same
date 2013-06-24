@@ -1,5 +1,5 @@
-require "samesame/dbscan_neighborhood"
-require "samesame/dbscan_clusters"
+require 'same_same/dbscan_neighborhood'
+require 'same_same/dbscan_clusters'
 
 module SameSame
 

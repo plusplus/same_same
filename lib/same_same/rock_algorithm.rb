@@ -1,8 +1,8 @@
-require "samesame/dendrogram"
-require "samesame/link_matrix"
-require "samesame/merge_goodness_measure"
-require "samesame/rock_clusters"
-require "samesame/similarity_matrix"
+require 'same_same/dendrogram'
+require 'same_same/link_matrix'
+require 'same_same/merge_goodness_measure'
+require 'same_same/rock_clusters'
+require 'same_same/similarity_matrix'
 
 module SameSame
   class RockAlgorithm

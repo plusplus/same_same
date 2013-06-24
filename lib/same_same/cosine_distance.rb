@@ -1,4 +1,4 @@
-require 'samesame/cosine_similarity'
+require 'same_same/cosine_similarity'
 
 module SameSame
   class CosineDistance

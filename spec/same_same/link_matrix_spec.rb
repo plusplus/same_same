@@ -1,4 +1,4 @@
-require 'samesame'
+require 'same_same'
 
 describe SameSame::LinkMatrix do
   let( :datapoints ) {(0..19).to_a}

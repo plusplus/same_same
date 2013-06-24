@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    samesame (0.0.1)
+    same_same (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -41,4 +41,4 @@ DEPENDENCIES
   colored
   pry-debugger
   rspec
-  samesame!
+  same_same!

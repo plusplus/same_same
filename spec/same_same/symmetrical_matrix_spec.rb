@@ -1,4 +1,4 @@
-require 'samesame'
+require 'same_same'
 
 describe SameSame::SymmetricalMatrix do
 

@@ -1,8 +1,8 @@
 require 'csv'
-require 'samesame'
-require 'samesame/dendrogram_printer'
-require 'pry-debugger'
+require 'same_same'
+require 'same_same/dendrogram_printer'
 
+# WARNING: This is just really testing that they don't blow up.
 describe SameSame::RockAlgorithm do
   let(:digg_data) {
     digg_data = CSV.read("spec/fixtures/digg_stories.csv", headers: true)
@@ -47,7 +47,7 @@ describe SameSame::RockAlgorithm do
 
     clusters = algo.cluster
 
-    SameSame::DendrogramPrinter.new.print_clusters( clusters )
+    #SameSame::DendrogramPrinter.new.print_clusters( clusters )
   end
 
   it "works on lines" do
@@ -64,7 +64,8 @@ describe SameSame::RockAlgorithm do
           distance: distance)
 
         clusters = algo.cluster
-        SameSame::DendrogramPrinter.new.print_clusters( clusters.select {|c| c.name != "Noise"} )
+        #expect(clusters.size).to be > 1
+        #SameSame::DendrogramPrinter.new.print_clusters( clusters.select {|c| c.name != "Noise"} )
       end
     end
   end

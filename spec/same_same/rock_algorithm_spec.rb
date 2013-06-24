@@ -1,6 +1,6 @@
 require 'csv'
-require 'samesame'
-require 'samesame/dendrogram_printer'
+require 'same_same'
+require 'same_same/dendrogram_printer'
 
 describe SameSame::RockAlgorithm do
   let(:dp1) {["book"]}
@@ -52,7 +52,7 @@ describe SameSame::RockAlgorithm do
     algo = SameSame::RockAlgorithm.new(datapoints: digg_data, k: k, th: th)
     dnd = algo.cluster
 
-    SameSame::DendrogramPrinter.new.print_last(dnd)
+    #SameSame::DendrogramPrinter.new.print_last(dnd)
   end
 
   it "works on lines" do
@@ -63,7 +63,7 @@ describe SameSame::RockAlgorithm do
         algo = SameSame::RockAlgorithm.new(datapoints: group, k: k, th: th)
         dnd = algo.cluster
         if dnd.non_singelton_leaves?
-          SameSame::DendrogramPrinter.new.print_last(dnd)
+          #SameSame::DendrogramPrinter.new.print_last(dnd)
         end
       end
     end

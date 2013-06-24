@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'samesame/version'
+require 'same_same/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "samesame"
-  gem.version       = Samesame::VERSION
+  gem.name          = "same_same"
+  gem.version       = SameSame::VERSION
   gem.authors       = ["Julian Russell"]
-  gem.email         = ["jr.plusplus@gmail.com"]
+  gem.email         = ["julian@myfoodlink.com"]
   gem.description   = %q{TODO: Write a gem description}
   gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""
