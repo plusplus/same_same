@@ -78,57 +78,52 @@ module SameSame
     end
 
 
-    def create_cluster( p, cluster_id)
-      neighbors = neighborhood.neighbors_of p
+    def create_cluster( point, cluster_id)
+      neighbors = neighborhood.neighbors_of point
       if neighbors.size < min_points
         # Assign point into "Noise" group. 
         # It will have a chance to become a border point later on.
-        dbscan_clusters.assign_to_noise(p)
+        dbscan_clusters.assign_to_noise(point)
         # return false to indicate that we didn't create any cluster
-        return false
-      end
-
-      # All points are reachable from the core point...
-      dbscan_clusters.assign_points(neighbors, cluster_id)
-      
-      # Remove point itself.
-      neighbors.delete(p)
-      
-      # Process the rest of the neighbors...
-      while !neighbors.empty?
-        # pick the first neighbor
-        neighbor = neighbors.first
+        false
+      else
+        # All points are reachable from the core point...
+        dbscan_clusters.assign_points(neighbors, cluster_id)
         
+        # Remove point itself.
+        neighbors.delete(point)
+        
+        # Process the rest of the neighbors
+        process_neighbors( neighbors, cluster_id )
+        true
+      end
+    end
+
+    def process_neighbors( neighbors, cluster_id )
+      while !neighbors.empty?
+        neighbor = neighbors.first
+        neighbors.delete(neighbor)
+
         # process neighbor
         neighbors_neighbors = neighborhood.neighbors_of neighbor
                 
-        if neighbors_neighbors.size < min_points
-          # do nothing. The neighbor is just a border point.
-        else      
-          # neighbor is another core point.  
+        if neighbors_neighbors.size >= min_points
+          # The neighbor is not a border point - it's a core point
           neighbors_neighbors.each do |neighbors_neighbor|
-          
-            if dbscan_clusters.noise?(neighbors_neighbor)
-              # It's a border point. We know that it doesn't have 
-              # enough neighbors to be a core point. Just add it 
-              # to the cluster.
-              dbscan_clusters.assign_point(neighbors_neighbor, cluster_id)
-            elsif dbscan_clusters.unclassified?(neighbors_neighbor)
-              
-              # We don't know if this point has enough neighbors
-              # to be a core point... add it to the list of points
-              # to be checked.
-              neighbors.add(neighbors_neighbor)
-                
-              # And assign it to the cluster
-              dbscan_clusters.assign_point(neighbors_neighbor, cluster_id)
-            end
+            process_neighbors_neighbor( neighbors, neighbors_neighbor, cluster_id )
           end
         end
-        
-        neighbors.delete neighbor
       end
-      true
+    end
+
+    def process_neighbors_neighbor(neighbors, neighbors_neighbor, cluster_id)
+      if dbscan_clusters.unclassified?(neighbors_neighbor)
+        neighbors.add( neighbors_neighbor )
+      end
+
+      unless dbscan_clusters.assigned_to_cluster?(neighbors_neighbor)
+        dbscan_clusters.assign_point(neighbors_neighbor, cluster_id)
+      end
     end
   
   end

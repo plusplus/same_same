@@ -20,6 +20,8 @@ module SameSame
       assign_points( unclassified, UNCLASSIFIED_ID )
     end
 
+
+
     def assign_to_noise( p )
       assign_point( p, NOISE_ID)
     end
@@ -30,6 +32,10 @@ module SameSame
     
     def noise?(p)
       point_in_cluster?(p, NOISE_ID)
+    end
+
+    def assigned_to_cluster?(p)
+      !noise?(p) && !unclassified?(p)
     end
     
     def point_in_cluster?( p, cluster_id)
