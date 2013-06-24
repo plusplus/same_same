@@ -5,7 +5,9 @@ Ruby version of clustering algorithms from "Algorithms of the Intelligent Web"
 
 ## Status
 
-Pretty much direct port of the sameple code from the book (Java).
+Pretty much direct port of the sameple code from the book (Java). Could really do with some refactorings.
+
+[![Code Climate](https://codeclimate.com/github/plusplus/same_same.png)](https://codeclimate.com/github/plusplus/same_same)
 
 ### Todo
   * **Expand specs**. The basics have specs, but some of the computation specs are just testing the thing doesn't blow up, NOT that the calculation is right. Lots of higher level code doesn't have any specs
