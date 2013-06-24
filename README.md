@@ -7,7 +7,6 @@ Ruby version of clustering algorithms from "Algorithms of the Intelligent Web"
 
 Pretty much direct port of the sameple code from the book (Java).
 
-
 ### Todo
   * **Expand specs**. The basics have specs, but some of the computation specs are just testing the thing doesn't blow up, NOT that the calculation is right. Lots of higher level code doesn't have any specs
   * **Refactor**. Some of the classes and methods are filthy. Things like `Cluster` are just thin wrappers that delegate to arrays.
@@ -17,7 +16,7 @@ Pretty much direct port of the sameple code from the book (Java).
 
 Add this line to your application's Gemfile:
 
-    gem 'samesame'
+    gem 'same_same'
 
 And then execute:
 
