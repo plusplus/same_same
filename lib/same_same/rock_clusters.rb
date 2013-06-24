@@ -45,17 +45,21 @@ module SameSame
     def calculate_closest_clusters
       self.closest_clusters = {}
       cluster_map.each do |cluster_key, cluster|
-        similarity = cluster_map.map do |other_key, other_cluster|
-          if cluster_key != other_key
-            number_of_links = link_matrix.count_links_between_clusters( cluster, other_cluster )
-            if number_of_links > 0
-              goodness = goodness_measure.g( number_of_links, cluster.size, other_cluster.size)
-              ClusterSimilarity.new( other_key, goodness )
-            end
-          end
-        end.compact.sort.first
+        similarity = find_most_similar_cluster( cluster_key, cluster )
         closest_clusters[cluster_key] = similarity if similarity
       end
+    end
+
+    def find_most_similar_cluster( cluster_key, cluster )
+      cluster_map.map do |other_key, other_cluster|
+        if cluster_key != other_key
+          number_of_links = link_matrix.count_links_between_clusters( cluster, other_cluster )
+          if number_of_links > 0
+            goodness = goodness_measure.g( number_of_links, cluster.size, other_cluster.size)
+            ClusterSimilarity.new( other_key, goodness )
+          end
+        end
+      end.compact.min
     end
 
     def merge_clusters(key1, key2)
