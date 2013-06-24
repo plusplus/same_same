@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = SameSame::VERSION
   gem.authors       = ["Julian Russell"]
   gem.email         = ["julian@myfoodlink.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Implementation of ROCK and DBSCAN clustering algorithms}
+  gem.summary       = %q{Implementation of ROCK and DBSCAN clustering algorithms}
+  gem.homepage      = "https://github.com/plusplus/same_same"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
